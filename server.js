@@ -13,9 +13,8 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// Serve frontend files
-app.use(express.static(path.join(__dirname, '../panel-ui')));
-
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, 'panel-ui')));
 // Middleware
 app.use(express.json());
 app.use(fileUpload());
@@ -27,7 +26,7 @@ app.use('/project', projectRoutes);
 
 // Root route
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../panel-ui/dashboard.html'));
+  res.sendFile(path.join(__dirname, 'panel-ui/dashboard.html'));
 });
 
 // Connect MongoDB
